@@ -1,0 +1,92 @@
+jenkins:
+  clouds:
+  - amazonEC2:
+      name: "cloudcamp-aws"
+      region: "us-east-1"
+      sshKeysCredentialsId: "ec2-key-pair"
+      templates:
+      - ami: "ami-020cba7c55df1f615"
+        amiType:
+          unixData:
+            sshPort: "22"
+        associatePublicIp: true
+        connectBySSHProcess: true
+        connectionStrategy: PRIVATE_IP
+        deleteRootOnTermination: false
+        description: "basic worker"
+        ebsEncryptRootVolume: DEFAULT
+        ebsOptimized: false
+        enclaveEnabled: false
+        hostKeyVerificationStrategy: ACCEPT_NEW
+        idleTerminationMinutes: "30"
+        initScript: |-
+          sudo apt update -y
+          sudo apt install openjdk-17-jdk -y
+        javaPath: "java"
+        labelString: "jdk17 linux x86"
+        maxTotalUses: -1
+        metadataEndpointEnabled: true
+        metadataHopsLimit: 1
+        metadataSupported: true
+        metadataTokensRequired: false
+        minimumNumberOfInstances: 0
+        minimumNumberOfSpareInstances: 0
+        mode: NORMAL
+        monitoring: false
+        numExecutors: 1
+        remoteAdmin: "ubuntu"
+        securityGroups: "jenkins-worker-sild"
+        stopOnTerminate: false
+        subnetId: "subnet-00ad2edb2c1755a05"
+        t2Unlimited: false
+        tags:
+        - name: "bootcamp"
+          value: "devops"
+        - name: "owner"
+          value: "slorcadelgado"
+        tenancy: Default
+        type: "t2.micro"
+        useEphemeralDevices: false
+      - ami: "ami-07890e867ab9c6658"
+        amiType:
+          unixData:
+            sshPort: "22"
+        associatePublicIp: true
+        connectBySSHProcess: true
+        connectionStrategy: PRIVATE_IP
+        deleteRootOnTermination: false
+        description: "TerraformWorker"
+        ebsEncryptRootVolume: DEFAULT
+        ebsOptimized: false
+        enclaveEnabled: false
+        hostKeyVerificationStrategy: ACCEPT_NEW
+        idleTerminationMinutes: "30"
+        initScript: |-
+          sudo apt update -y
+          sudo apt install openjdk-17-jdk -y
+        javaPath: "java"
+        labelString: "terraform1.13 jdk17 linux x86"
+        maxTotalUses: -1
+        metadataEndpointEnabled: true
+        metadataHopsLimit: 1
+        metadataSupported: true
+        metadataTokensRequired: false
+        minimumNumberOfInstances: 0
+        minimumNumberOfSpareInstances: 0
+        mode: NORMAL
+        monitoring: false
+        numExecutors: 1
+        remoteAdmin: "ubuntu"
+        securityGroups: "jenkins-worker-sild"
+        stopOnTerminate: false
+        subnetId: "subnet-00ad2edb2c1755a05"
+        t2Unlimited: false
+        tags:
+        - name: "bootcamp"
+          value: "devops"
+        - name: "owner"
+          value: "slorcadelgado"
+        tenancy: Default
+        type: "t2.micro"
+        useEphemeralDevices: false
+      useInstanceProfileForCredentials: true
