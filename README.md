@@ -1,2 +1,2 @@
-# cloudcamp-jenkins-cac
-CloudCamp Jenkins Configuration as Code
+# cloudcamp-jenkins-jcasc
+CloudCamp Jenkins Configuration as Code (jcasc)
